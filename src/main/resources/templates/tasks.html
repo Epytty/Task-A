@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Task-A</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class = "container mt-5">
+    <h1>Список задач</h1><br>
+    <table>
+        <tr th:each="el : ${tasks}">
+            <td th:text="${el.text}"></td>
+            <td><a th:href="'/tasks/' + ${el.id}">Детальнее</a></td>
+        </tr>
+    </table>
+    <a href="/"><button>Главная</button></a>
+    <a href="/tasks/new" ><button>Добавить задачу</button></a>
+</div>
+</body>
+</html>
