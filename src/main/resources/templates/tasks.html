@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+<a href="/tasks/new"><button>Добавить задачу</button></a>
+<table>
+    <tr th:each="task : ${tasks}">
+        <td th:text="${task.text}"></td>
+        <td th:text="${task.completed ? 'Выполнено' : 'Не выполнено'}"></td>
+        <td>
+            <a th:href="@{/tasks/{id}(id=${task.id})}">Детальнее</a>
+            <form th:action="@{/tasks/{id}/complete(id=${task.id})}" method="post">
+                <input type="submit" value="Отметить как выполненное">
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
