@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+<h1>Создание задачи</h1>
+<form th:action="@{/tasks}" th:object="${task}" method="post">
+    <input type="text" th:field="*{text}" required>
+    <input type="submit" value="Добавить задачу">
+</form>
+<a href="/tasks"><button>Назад</button></a>
+</body>
+</html>

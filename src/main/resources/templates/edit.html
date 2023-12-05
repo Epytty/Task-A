@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+<form th:action="@{/tasks/{id}(id=${task.id})}" method="post">
+    <input type="text" th:value="${task.text}" name="text" required>
+    <input type="submit" value="Сохранить изменения">
+</form>
+</body>
+</html>
