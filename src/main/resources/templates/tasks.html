@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Task-A</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+  font-family: 'KanitRegular';
+  src: url('fonts/Kanit-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'KanitExtraLight';
+  src: url('fonts/Kanit-ExtraLight.ttf');
+}
+
+@font-face {
+  font-family: 'KanitMedium';
+  src: url('fonts/Kanit-Medium.ttf');
+}
+
+body {
+  box-sizing: border-box;
+  font-family: 'Kanit', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.header-container {
+  position: relative;
+  width: 100%;
+}
+
+  .header {
+  width: 100%;
+  height: 100px;
+  background-color: #24426d;
+  position: relative;
+  border-bottom: 10px solid #1c1d50;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+  .logo {
+  width: 120px;
+  height: 120px;
+  margin-top: 40px;
+  background-image: url('logo.png');
+  background-size: cover;
+  border-radius: 50%;
+  border: 8px solid #1c1d50;
+  background-color: #c0d7fd;
+  }
+
+.left-column {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 355px;
+  height: 100vh;
+  background-color: #87a5d1;
+  border-right: 10px solid #1c1d50;
+  z-index: 1;
+  top: 100px;
+}
+
+.left-h1 {
+  font-family: 'Kanit-Regular', sans-serif;
+  font-size: 45px;
+  color: #1a1c50;
+  margin-left: 5px;
+}
+
+.white-space {
+width: 100%;
+height: 50px;
+background-color: white;
+}
+
+.container {
+  margin-left: 375px;
+}
+
+.tableText, .tableTextCompleted {
+text-align: center;
+font-family: 'Kanit-Regular', sans-serif;
+background-color: #c0d7fd;
+display: inline-block;
+padding: 10px;
+margin: 0 auto;
+margin-left: 25px;
+font-size: 25px;
+position: relative;
+border-top-right-radius: 10px;
+border-top-left-radius: 10px;
+color: #1a1c50;
+}
+
+.tableText::after, .tableTextCompleted::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 100%;
+  height: 100px;
+  background-color: #87a5d1;
+  z-index: -1;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.table-completed-tasks::after , .table-tasks::after{
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 100%;
+  height: 400px;
+  background-color: #87a5d1;
+  border-radius: 15px;
+  z-index: -1;
+}
+
+.table-tasks, .table-completed-tasks {
+position: relative;
+width: 99%;
+margin: 0 auto;
+border-collapse: separate;
+border-spacing: 10px;
+border-radius: 15px;
+background-color: #c0d7fd;
+justify-content: flex-start;
+margin-bottom: 50px;
+display: flex;
+flex-wrap: wrap;
+}
+
+.table-tasks::-webkit-scrollbar, .table-completed-tasks::-webkit-scrollbar {
+  display: none;
+}
+
+td {
+max-width: 190px;
+min-width: 190px;
+height: 305px;
+background-color: #647ea5;
+position: relative;
+margin: 10px;
+border-radius: 15px;
+justify-content: flex-start;
+}
+
+.h1Tasks-incompleted, .h1Tasks-completed{
+  font-weight: bold;
+  color: white;
+  position: absolute;
+  top: 0px;
+  left: 10px;
+  width: 80%;
+  word-wrap: break-word;
+  font-family: 'KanitRegular', sans-serif;
+  font-size: 28px;
+}
+
+.h1Tasks-completed{
+  top: 40px;
+  text-decoration: line-through;
+}
+
+.textTasks, .textTasksCompleted {
+  color: white;
+  display: block;
+  text-align: left;
+  font-family: 'KanitExtraLight', sans-serif;
+  font-size: 16px;
+  color: white;
+  position: absolute;
+  top: auto;
+  bottom: 90px;
+  left: 10px;
+  transform: translateY(-50%);
+  width: 100%;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 20px;
+}
+
+.textTasksCompleted{
+  bottom: 45px;
+  text-decoration: line-through;
+}
+
+.button-incompleted, .button-info-completed, .button-info-incompleted {
+  width: 90%;
+  height: 35px;
+  background-color: #1a1c50;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  bottom: 55px;
+  transform: translateX(-50%);
+  font-family: 'Kanit-Medium', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.button-info-completed, .button-info-incompleted{
+  bottom: 10px;
+}
+
+.checkmark {
+width: 50px;
+height: 50px;
+border-radius: 50%;
+background-color: #1a1c50;
+color: white;
+font-size: 30px;
+font-weight: bold;
+line-height: 50px;
+text-align: center;
+position: absolute;
+top: 10px;
+left: 50%;
+transform: translateX(-50%);
+}
+
+.add-task-button {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #1a1c50;
+  color: white;
+  font-size: 70px;
+  text-align: center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.add-task-button strong {
+  display: block;
+  margin-top: -10px;
+}
+    </style>
+</head>
+<body>
+<div class="header-container">
+    <header class="header">
+        <div class="logo"></div>
+    </header><br>
+    <div class="line"></div>
+</div>
+<a href="/tasks/new" class="add-task-button"><strong>+</strong></a>
+<div class="left-column">
+    <h1 class="left-h1">Task-A</h1><br>
+</div>
+<div class="container">
+    <div class="tableText-header"></div>
+    <h2 class="tableText" th:text="${incompletedTasks.isEmpty()} ? 'Список пуст, добавьте задачу!' : 'Задачи'"></h2>
+    <div class="table-tasks">
+    <table class="table-tasks" th:if="${!incompletedTasks.isEmpty()}" style="overflow-x: auto; overflow-y: hidden;">
+        <th:block th:each="task : ${incompletedTasks}">
+            <td class="incompleted" th:class="${task.completed} ? '' : 'incompleted'" style="position: relative;">
+                <h1 class="h1Tasks-incompleted" th:text="${task.title}"></h1>
+                <span class="textTasks" th:text="${task.text}"></span><br>
+                <a th:href="@{/tasks/{id}(id=${task.id})}"><button class="button-info-incompleted">Детальнее</button></a><br>
+                <a th:href="@{/tasks/{id}/complete(id=${task.id})}" th:if="${!task.completed}"><button class="button-incompleted">Выполнено</button></a>
+            </td>
+        </th:block>
+    </table>
+    </div>
+    <h2 class="tableTextCompleted" th:text="${completedTasks.isEmpty()} ? 'Список пуст, выполните задачу!' : 'Выполненные задачи'"></h2>
+    <div class="table-completed-tasks">
+    <table th:if="${!completedTasks.isEmpty()}"  class="table-completed-tasks" style="overflow-x: auto; overflow-y: hidden;">
+        <th:block th:each="task : ${completedTasks}">
+            <td style="position: relative;">
+                <div class="checkmark">✓</div>
+                <del><h1 class="h1Tasks-completed" th:text="${task.title}"></h1></del>
+                <del><span class="textTasksCompleted" th:text="${task.text}"></span></del>
+                <a th:href="@{/tasks/{id}(id=${task.id})}"><button class="button-info-completed">Детальнее</button></a>
+            </td>
+        </th:block>
+    </table>
+    </div>
+</div>
+</body>
+</html>
