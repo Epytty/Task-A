@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:object-fit="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Task-A</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+  @font-face {
+  font-family: 'KanitRegular';
+  src: url('fonts/Kanit-Regular.ttf');
+  }
+
+  @font-face {
+  font-family: 'KanitExtraLight';
+  src: url('fonts/Kanit-ExtraLight.ttf');
+  }
+
+  @font-face {
+  font-family: 'KanitMedium';
+  src: url('fonts/Kanit-Medium.ttf');
+  }
+
+  body {
+  box-sizing: border-box;
+  font-family: 'Kanit', sans-serif;
+  margin: 0;
+  padding: 0;
+  }
+
+  .header-container {
+  position: relative;
+  width: 100%;
+  }
+
+  .header {
+  width: 100%;
+  height: 100px;
+  background-color: #24426d;
+  position: relative;
+  border-bottom: 10px solid #1c1d50;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+  .block {
+  position: relative;
+  width: 85%;
+  height: 800px;
+  margin: 0 auto;
+  border-radius: 15px;
+  background-color: #c0d7fd;
+  justify-content: center;
+  bottom: 50px;
+  display: flex;
+  flex-direction: row; /* изменено на row для расположения элементов слева направо */
+  align-items: center;
+  justify-content: flex-start; /* изменено на flex-start для расположения элементов с левого края */
+  margin-top: 50px;
+  padding-left: 20px; /* добавлено для отступа от левого края */
+  }
+
+  .block-content {
+  width: 90%; /* добавлено для контроля ширины содержимого */
+  display: flex;
+  margin-left: 75px;
+  flex-direction: column; /* изменено на column для вертикального расположения элементов */
+  justify-content: space-between; /* добавлено для распределения элементов по вертикали */
+  }
+
+  .block::after {
+  content: "";
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 100%;
+  height: 800px;
+  border-radius: 15px;
+  z-index: -1;
+  background-color: #87a5d1;
+  }
+
+  .h1Block::after {
+  content: "";
+  position: absolute;
+  color: #1a1c50;
+  font-size: 26px;
+  justify-content: center;
+  top: -10px;
+  right: -10px;
+  width: 100%;
+  height: 90px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: #87a5d1;
+  z-index: -1;
+  }
+
+  .block a:last-child, .blockButton {
+  position: relative; /* изменено на relative для корректного отображения кнопок */
+  width: 80%; /* изменено на 30% для уменьшения размера кнопок */
+  overflow: hidden; /* текст не будет выходить за границы кнопки */
+  }
+
+  th, td {
+  width: 80%;
+  font-family: 'Kanit-Regular', sans-serif; /* установка шрифта */
+  color: #1a1c50; /* установка цвета текста */
+  text-align: center; /* выравнивание текста по центру */
+  border: 3px solid #87a5d1; /* обводка */
+  border-radius: 5px;
+  font-size: 22px;
+  }
+
+  .h1Block {
+  position: relative;
+  color: #1a1c50;
+  background-color: #c0d7fd;
+  display: inline-block;
+  padding: 20px;
+  margin-left: 225px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  margin-bottom: 0;
+  text-indent: 10px;
+  }
+
+  .blockButton {
+  width: 100%;
+  height: 55px;
+  background-color: #1a1c50;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Kanit-Medium', sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 5px;
+  }
+    </style>
+</head>
+<body>
+<div class="header-container">
+    <header class="header">
+    </header><br>
+    <div class="line"></div>
+</div>
+<div class="tableText-header"></div>
+<h1 class="h1Block">Информация о задаче</h1>
+<div class="block">
+    <div class="block-content">
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Заголовок</th>
+                <th>Описание</th>
+            </tr>
+            <tr>
+                <td class="id" th:text="${task.id}"></td>
+                <td class="title" th:text="${task.title}"></td>
+                <td class="text" th:text="${task.text}"></td>
+            </tr>
+        </table><br>
+        <div>
+            <a th:href="@{/tasks/{id}/delete(id=${task.id})}"><button class="blockButton">Удалить</button></a>
+            <a th:href="@{/tasks/{id}/edit(id=${task.id})}"><button class="blockButton">Редактировать</button></a>
+            <a href="/tasks"><button class="blockButton">К списку</button></a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
